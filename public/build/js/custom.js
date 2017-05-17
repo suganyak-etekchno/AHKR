@@ -1754,6 +1754,19 @@ if (typeof NProgress != 'undefined') {
 			}, function(start, end, label) {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
+                        $('#mdate').daterangepicker({
+			  singleDatePicker: true,
+			  singleClasses: "picker_5"
+			}, function(start, end, label) {
+			  console.log(start.toISOString(), end.toISOString(), label);
+			});
+                        
+                        $('#sdate').daterangepicker({
+			  singleDatePicker: true,
+			  singleClasses: "picker_6"
+			}, function(start, end, label) {
+			  console.log(start.toISOString(), end.toISOString(), label);
+			});
   
   
 		}

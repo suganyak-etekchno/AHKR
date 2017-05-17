@@ -18,11 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'User\UserController@index')->name('home');
-
-
 Route::get('/admin', 'Admin\AdminController@page')->name('adminpage');
-Route::get('/user', 'Admin\AdminController@user')->name('user');
- Route::post('/query', 'Admin\AdminController@insert');
+Route::post('/query', 'Admin\AdminController@insert');
+Route::post('/companyinsert', 'Company\CompanyController@insert');
+Route::post('/productinsert', 'Product\ProductController@insert');
+//selling
+Route::post('/sale', 'Product\ProductController@selling');
+
+Route::get('/user', 'Admin\AdminController@add')->name('user');
+Route::get('/company', 'Company\CompanyController@add')->name('company');
+Route::get('/product', 'Product\ProductController@add')->name('product');
+Route::get('/sale', 'Product\ProductController@sale')->name('sale');
 
 
 

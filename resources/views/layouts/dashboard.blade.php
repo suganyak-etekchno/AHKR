@@ -30,7 +30,7 @@
     <link href="/dashboard/cropper/dist/cropper.min.css" rel="stylesheet">
 
     <!-- Custom styling plus plugins -->
-    <link href="/build/css/custom.min.css" rel="stylesheet">
+    <link href="/build/css/custom.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -66,13 +66,37 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> User <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-user"></i> User <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="user">Add User</a></li>
                       
                     </ul>
                   </li>                  
                 </ul>
+                
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-building"></i> Company <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="company">Add Company</a></li>
+                      
+                    </ul>
+                  </li>                  
+                </ul>
+                
+                
+                 <ul class="nav side-menu">
+                  <li><a><i class="fa fa-product-hunt"></i> Product <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="product">Add Product</a></li>
+                       <li><a href="sale">Sales</a></li>
+                      
+                    </ul>
+                  </li>                  
+                </ul>
+                
+             
+                
+                
               </div>
             </div>
             <!-- /sidebar menu -->
@@ -173,7 +197,7 @@
     <!-- script src="/dashboard/cropper/dist/cropper.min.js"></script -->
 
     <!-- Custom Theme Scripts -->
-    <script src="/build/js/custom.min.js"></script>
+    <script src="/build/js/custom.js"></script>
 
 
 <script src="{{asset('js/user.js')}}"></script>
