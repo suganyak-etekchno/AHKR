@@ -2602,6 +2602,96 @@ if (typeof NProgress != 'undefined') {
 				TableManageButtons.init();
 				
 			};
+                        
+                        
+                        
+                        function init_DataTables1() {
+				
+				//console.log('run_datatables');
+				
+				if( typeof ($.fn.DataTable) === 'undefined'){ return; }
+				//console.log('init_DataTables1');
+				
+				var handleDataTableButtons1 = function() {
+				  if ($("#datatable-buttons1").length) {
+					$("#datatable-buttons1").DataTable({
+					  dom: "Bfrtip",
+                                           pageLength: 1,
+					  buttons: [
+						{
+						  extend: "copy",
+						  className: "btn-sm"
+						},
+						{
+						  extend: "csv",
+						  className: "btn-sm"
+						},
+						{
+						  extend: "excel",
+						  className: "btn-sm"
+						},
+						{
+						  extend: "pdfHtml5",
+						  className: "btn-sm"
+						},
+						{
+						  extend: "print",
+						  className: "btn-sm"
+						},
+					  ],
+					  responsive: true
+					});
+				  }
+				};
+
+				TableManageButtons1 = function() {
+				  "use strict";
+				  return {
+					init: function() {
+					  handleDataTableButtons1();
+					}
+				  };
+				}();
+                                
+                               
+
+//				$('#datatable').dataTable();
+//
+//				$('#datatable-keytable').DataTable({
+//				  keys: true
+//				});
+//
+//				$('#datatable-responsive').DataTable();
+//
+//				$('#datatable-scroller').DataTable({
+//				  ajax: "js/datatables/json/scroller-demo.json",
+//				  deferRender: true,
+//				  scrollY: 380,
+//				  scrollCollapse: true,
+//				  scroller: true
+//				});
+//
+//				$('#datatable-fixed-header').DataTable({
+//				  fixedHeader: true
+//				});
+//
+//				var $datatable = $('#datatable-checkbox');
+//
+//				$datatable.dataTable({
+//				  'order': [[ 1, 'asc' ]],
+//				  'columnDefs': [
+//					{ orderable: false, targets: [0] }
+//				  ]
+//				});
+//				$datatable.on('draw.dt', function() {
+//				  $('checkbox input').iCheck({
+//					checkboxClass: 'icheckbox_flat-green'
+//				  });
+//				});
+
+				TableManageButtons1.init();
+				
+			};
 	   
 			/* CHART - MORRIS  */
 		
@@ -5067,6 +5157,7 @@ if (typeof NProgress != 'undefined') {
 		init_select2();
 		init_validator();
 		init_DataTables();
+                init_DataTables1();
 		init_chart_doughnut();
 		init_gauge();
 		init_PNotify();
@@ -5079,4 +5170,72 @@ if (typeof NProgress != 'undefined') {
 				
 	});	
 	
-
+//
+//var editor; // use a global for the submit and return data rendering in the examples
+// 
+//$(document).ready(function() {
+//    
+//    alert('test');
+//    editor = new $.fn.dataTable.Editor( {
+//        ajax: "../php/staff.php",
+//        table: "#example",
+//        fields: [ {
+//                label: "First name:",
+//                name: "first_name"
+//            }, {
+//                label: "Last name:",
+//                name: "last_name"
+//            }, {
+//                label: "Position:",
+//                name: "position"
+//            }, {
+//                label: "Office:",
+//                name: "office"
+//            }, {
+//                label: "Extension:",
+//                name: "extn"
+//            }, {
+//                label: "Start date:",
+//                name: "start_date",
+//                type: "datetime"
+//            }, {
+//                label: "Salary:",
+//                name: "salary"
+//            }
+//        ]
+//    } );
+// 
+//    // Activate an inline edit on click of a table cell
+//    $('#example').on( 'click', 'tbody td:not(:first-child)', function (e) {
+//        editor.inline( this );
+//    } );
+// 
+//    $('#example').DataTable( {
+//        dom: "Bfrtip",
+//        ajax: "../php/staff.php",
+//        order: [[ 1, 'asc' ]],
+//        columns: [
+//            {
+//                data: null,
+//                defaultContent: '',
+//                className: 'select-checkbox',
+//                orderable: false
+//            },
+//            { data: "first_name" },
+//            { data: "last_name" },
+//            { data: "position" },
+//            { data: "office" },
+//            { data: "start_date" },
+//            { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+//        ],
+//        select: {
+//            style:    'os',
+//            selector: 'td:first-child'
+//        },
+//        buttons: [
+//            { extend: "create", editor: editor },
+//            { extend: "edit",   editor: editor },
+//            { extend: "remove", editor: editor }
+//        ]
+//    } );
+//} );

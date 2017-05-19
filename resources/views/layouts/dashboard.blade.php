@@ -28,6 +28,22 @@
     <link href="/dashboard/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
     <link href="/dashboard/cropper/dist/cropper.min.css" rel="stylesheet">
+    
+    <!-- iCheck -->
+    <link href="/dashboard/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="/dashboard/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/dashboard/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/dashboard/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/dashboard/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/dashboard/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    
+    
+<!--<link href="/dashboard/jquery.dataTables.min.css" rel="stylesheet">
+<link href="/dashboard/buttons.dataTables.min.css" rel="stylesheet">
+<link href="/dashboard/select.dataTables.min.css" rel="stylesheet">
+<link href="/dashboard/editor.dataTables.min.css" rel="stylesheet">-->
+
 
     <!-- Custom styling plus plugins -->
     <link href="/build/css/custom.css" rel="stylesheet">
@@ -69,6 +85,8 @@
                   <li><a><i class="fa fa-user"></i> User <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="user">Add User</a></li>
+                       <li><a href="edit">Edit User</a></li>
+                      <li><a href="list">View User</a></li>
                       
                     </ul>
                   </li>                  
@@ -195,7 +213,26 @@
     <script src="/dashboard/jquery-knob/dist/jquery.knob.min.js"></script>
     <!-- Cropper -->
     <!-- script src="/dashboard/cropper/dist/cropper.min.js"></script -->
-
+    
+    <script src="/dashboard/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="/dashboard/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/dashboard/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/dashboard/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/dashboard/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/dashboard/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/dashboard/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/dashboard/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/dashboard/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/dashboard/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/dashboard/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/dashboard/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/dashboard/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="/dashboard/jszip/dist/jszip.min.js"></script>
+    <script src="/dashboard/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/dashboard/pdfmake/build/vfs_fonts.js"></script>
+<!--<script src="/dashboard/select/dataTables.select.min"></script>
+<script src="/editor/select/dataTables.editor.min"></script>-->
     <!-- Custom Theme Scripts -->
     <script src="/build/js/custom.js"></script>
 

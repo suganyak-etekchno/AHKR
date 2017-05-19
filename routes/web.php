@@ -26,9 +26,17 @@ Route::post('/productinsert', 'Product\ProductController@insert');
 Route::post('/sale', 'Product\ProductController@selling');
 
 Route::get('/user', 'Admin\AdminController@add')->name('user');
+Route::get('/edit', 'Admin\AdminController@edit')->name('edit_user');
+Route::get('/list', 'Admin\AdminController@view')->name('view_user');
+
+
+
 Route::get('/company', 'Company\CompanyController@add')->name('company');
 Route::get('/product', 'Product\ProductController@add')->name('product');
 Route::get('/sale', 'Product\ProductController@sale')->name('sale');
+
+
+
 
 
 

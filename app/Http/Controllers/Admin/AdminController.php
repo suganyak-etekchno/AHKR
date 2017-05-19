@@ -8,6 +8,7 @@ use DB;
 use Illuminate\Support\Facades\Input;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 class AdminController extends Controller
 {
     
@@ -75,4 +76,25 @@ class AdminController extends Controller
 
 
     }
+    
+    public function view()
+    {
+        $users = User::all();
+//        echo "<pre>";
+//        print_r($users);
+//        echo "</pre>";
+        return view('Admin.view')->with('users', $users);
+       
+         
+    }
+    
+     public function edit()
+    {
+        $users = User::all();
+
+      //  return view('Admin.view')->with('users', $users);
+       
+         
+    }
+    
 }
