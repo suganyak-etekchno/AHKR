@@ -52,7 +52,7 @@
                       
                       
                       
-                      <table id="example" class="display" cellspacing="0" width="100%">
+<!--                      <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th></th>
@@ -64,7 +64,7 @@
                 <th>Salary</th>
             </tr>
         </thead>
-    </table>
+    </table>-->
                       
                       
                       
