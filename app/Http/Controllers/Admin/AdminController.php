@@ -83,16 +83,47 @@ class AdminController extends Controller
 //        echo "<pre>";
 //        print_r($users);
 //        echo "</pre>";
-        return view('Admin.view')->with('users', $users);
+   //     return view('Admin.view')->with('users', $users);
        
          
     }
     
-     public function edit()
+     public function edit(request $request,$process='')
     {
         $users = User::all();
+         $id = $request->input('id');
+        
+        if($process == 'fetch'){
+            $user = DB::table('users')->where('id', '=', $id)->get();
+             return json_encode($user[0],true);
+        }
+        
+           
+        if($process == 'edit'){            
+            $username = $request->input('username');
+            $email = $request->input('email');
+            $mobile = $request->input('mobile');
+            $user_level = $request->input('user_level');
+            $updated = DB::table('users')->where(array('id' => $id))->update(['user_name' => $username,
+                'email' => $email,'mobile' => $mobile,'user_level' => $user_level]);
+            return $updated;
+            exit;            
+        }
+        
+        
+//        if($process == 'delete'){            
+//            $username = $request->input('username');
+//            $email = $request->input('email');
+//            $mobile = $request->input('mobile');
+//            $user_level = $request->input('user_level');
+//            $updated = DB::table('users')->where(array('id' => $id))->update(['user_name' => $username,
+//                'email' => $email,'mobile' => $mobile,'user_level' => $user_level]);
+//            return $updated;
+//            exit;            
+//        }
+        
 
-      //  return view('Admin.view')->with('users', $users);
+        return view('Admin.view')->with('users', $users);
        
          
     }

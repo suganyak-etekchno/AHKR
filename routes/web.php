@@ -29,7 +29,7 @@ Route::get('/user', 'Admin\AdminController@add')->name('user');
 Route::get('/edit', 'Admin\AdminController@edit')->name('edit_user');
 Route::get('/list', 'Admin\AdminController@view')->name('view_user');
 
-
+Route::post('/edit/{process?}', 'Admin\AdminController@edit');
 
 Route::get('/company', 'Company\CompanyController@add')->name('company');
 Route::get('/product', 'Product\ProductController@add')->name('product');

@@ -47,6 +47,12 @@
 
     <!-- Custom styling plus plugins -->
     <link href="/build/css/custom.css" rel="stylesheet">
+        
+    <link rel="stylesheet" href="global/css/bootstrap-extend.min.css">      
+    <link rel="stylesheet" href="global/fonts/material-design/material-design.min.css">
+    
+    
+    
   </head>
 
   <body class="nav-md">
@@ -235,7 +241,7 @@
 <script src="/editor/select/dataTables.editor.min"></script>-->
     <!-- Custom Theme Scripts -->
     <script src="/build/js/custom.js"></script>
-
+ <script src="/build/js/dashboard.js"></script>
 
 <script src="{{asset('js/user.js')}}"></script>
   </body>
