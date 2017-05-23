@@ -51,17 +51,38 @@
 
 
  $(".del-row").click(function(e){
-     alert('delete'+this.id);
-      html='';
-      html+='Are you sure to delete the record.';            
+  
+    html='';
+    html+='Are you sure to delete the record.';            
     html+='<button data='+this.id+' type="button" class="del_user" >Yes</button>';
-    html+='<button  type="button" class="del_user" >No</button>';
+    html+='<button  type="button" class="cancel" >No</button>';
     jQuery("#examplePopoverTable").html(html);
             
             
-       
+    $(".del_user").click(function(){             
+      $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+            $.ajax({
+                    type: "POST",
+                    url: 'delete/delete',
+                    data:{id:$(this).attr('data')},
+                    dataType:'json',                    
+                    success: function(data) {                                           
+                         $.each(data, function(index, element) {
+                            console.log(element);
+                            alert(element.status);
+                        });
+                    }
+
+                });
+    });
         
         
                     
     
  });
+ 
+  

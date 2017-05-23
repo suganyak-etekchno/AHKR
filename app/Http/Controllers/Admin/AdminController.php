@@ -128,4 +128,25 @@ class AdminController extends Controller
          
     }
     
+    public function delete(request $request,$process='')
+    {
+        $status = array();
+        
+        
+        if($process == 'delete'){            
+            $id = $request->input('id');
+            $deleted = DB::table('users')->where('id', $id)->delete();
+            if($deleted == 1){
+                $status[] = array('status'=>'deleted' );      
+            }
+              
+            return json_encode($status);            
+        }
+        
+        
+       
+        
+        
+    }
+    
 }

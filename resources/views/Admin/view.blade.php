@@ -59,8 +59,8 @@
                                  <td class="actions">
                                    
                                
-                                    <i id="{{$user['id']}}" data-target="#editticket" data-toggle="modal" data="edit_{{$user['id']}}" class="icon md-edit edit-row" aria-hidden="true"></i>                                    
-                                     <i id="{{$user['id']}}" data-target="#editticket" data-toggle="modal" data="delete_{{$user['id']}}" class="icon md-delete del-row" aria-hidden="true"></i>
+                                    <i id="{{$user['id']}}" data-target="#editticket" data-toggle="modal" data="edit_{{$user['id']}}" class="fa fa-pencil-square-o edit-row" aria-hidden="true"></i>                                    
+                                     <i id="{{$user['id']}}" data-target="#editticket" data-toggle="modal" data="delete_{{$user['id']}}" class="fa fa-trash-o  del-row" aria-hidden="true"></i>
                                      
                                      
                                   
