@@ -42,45 +42,44 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    
+                    <?php if(isset($products)){  ?>
                     <table id="datatable-buttons1" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th>Id</th>
                           <th>Name</th>
-                          <th>Email</th>
-                          <th>Contact</th>    
-                          <th>User Type</th>    
+                          <th>Door Count</th>
+                          <th>Row Count</th>
+                          <th>Manufactured date</th>
+                          <th>Status</th>  
                           <th>Action</th>   
                         </tr>
                       </thead>
                       <tbody>                          
-                           @foreach($users as $user)
+                           @foreach($products as $value)
                              <tr>
-                                <td id="dt_username">{{ $user->user_name }}</td>
-                                <td id="dt_email">{{ $user->email }}</td>
-                                <td id="dt_mobile">{{ $user->mobile }}</td>
-                                <td id="dt_user_level">{{ $user->user_level }}</td>
-                                 <td class="actions">
-                                   
-                               
-                                    <i id="{{$user['id']}}" data-target="#editticket" data-toggle="modal" data="edit_{{$user['id']}}" class="fa fa-pencil-square-o edit-row" aria-hidden="true"></i>                                    
-                                     <i id="{{$user['id']}}" data-target="#editticket" data-toggle="modal" data="delete_{{$user['id']}}" class="fa fa-trash-o  del-row" aria-hidden="true"></i>
-                                     
-                                     
-                                  
-                                  </td>
+                                <td id="dt_pid{{ $value->id }}">{{ $value->id }}</td>
+                                <td id="dt_pname{{ $value->id }}">{{ $value->product_name }}</td>
+                                <td id="dt_door_count{{ $value->id }}">{{ $value->door_count }}</td>
+                                <td id="dt_row_count{{ $value->id }}">{{ $value->row_count }}</td>
+                                <td id="dt_date{{ $value->id }}">{{ date('Y-m-d',strtotime($value->manufactured_date)) }}</td>
+                                <td id="dt_status{{ $value->id }}">{{ $value->status == 1 ? 'Active' : 'Deactive' }}</td>                                 
+                                <td class="actions">
+                                    <i id="{{$value['id']}}" data-target="#product_model" data-toggle="modal" data="edit_{{$value['id']}}" class="fa fa-pencil-square-o pedit-row" aria-hidden="true"></i>                                    
+                                    <i id="{{$value['id']}}" data-target="#product_model" data-toggle="modal" data="delete_{{$value['id']}}" class="fa fa-trash-o  pdel-row" aria-hidden="true"></i>                                                                       
+                                </td>
                               </tr>                              
                             @endforeach                        
                       </tbody>
                     </table>
-                      
+                     <?php } ?> 
                   </div>
                 </div>
               </div>
       </div>
     </div>
 </div>
-<div class="modal fade example-modal-lg" id="editticket" aria-hidden="true" aria-labelledby="exampleOptionalLarge" role="dialog" tabindex="-1">
+<div class="modal fade example-modal-lg" id="product_model" aria-hidden="true" aria-labelledby="exampleOptionalLarge" role="dialog" tabindex="-1">
 	<div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -88,7 +87,7 @@
                         <span aria-hidden="true">*</span>
                     </button>
                     <h4 class="modal-title">
-                        Edit User Details
+                        Edit Product Details
                         <span id="pop_invoice"></span>
                     </h4>
                 </div>

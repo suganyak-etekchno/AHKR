@@ -91,9 +91,7 @@
                   <li><a><i class="fa fa-user"></i> User <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="user">Add User</a></li>
-                       <li><a href="edit">Edit User</a></li>
-                      <li><a href="list">View User</a></li>
-                      
+                       <li><a href="edit">Other</a></li>
                     </ul>
                   </li>                  
                 </ul>
@@ -102,7 +100,8 @@
                   <li><a><i class="fa fa-building"></i> Company <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="company">Add Company</a></li>
-                      
+<!--                       <li><a href="cedit">Other</a></li>-->
+                        <li><a href="cview">Logs</a></li>
                     </ul>
                   </li>                  
                 </ul>
@@ -111,8 +110,11 @@
                  <ul class="nav side-menu">
                   <li><a><i class="fa fa-product-hunt"></i> Product <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="product">Add Product</a></li>
-                       <li><a href="sale">Sales</a></li>
+                        <li><a href="product">Add Product</a></li>
+                        <li><a href="sale">Sales</a></li>
+                        <li><a href="products">Other</a></li>
+                        
+<!--                        <li><a href="#">Logs</a></li>-->
                       
                     </ul>
                   </li>                  

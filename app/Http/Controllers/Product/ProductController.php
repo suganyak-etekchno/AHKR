@@ -8,6 +8,8 @@ use DB;
 use Illuminate\Support\Facades\Input;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use App\Product;
+use App\Sale;
 class ProductController extends Controller
 {
     
@@ -49,16 +51,16 @@ class ProductController extends Controller
         $door = $input['door_count'];
         $row = $input['row_count'];
         $mdate = date('Y-m-d',strtotime($input['mdate']));        
-        $status = $input['status'];         
+        $status = $input['status'];
         
-        $data = array(
-            'name'=>$name,
-            'door_count'=>$door,           
-            'row_count'=>$row, 
-            'manufactured_date'=>$mdate, 
-            'status'=>$status
-        );     
-        $product =  DB::table('product')->insert($data);
+        
+        $Product_Ins = new Product;
+        $Product_Ins->product_name = $name;
+        $Product_Ins->door_count = $door;
+        $Product_Ins->row_count = $row;
+        $Product_Ins->manufactured_date = $mdate;
+        $Product_Ins->status = $status;
+        $Product_Ins->save();
         return 1;
     }
     
@@ -69,17 +71,79 @@ class ProductController extends Controller
         $pro_id = $input['pro_id'];
         $cmp_id = $input['cmp_id'];
         $branch = $input['branch'];               
-        $position = $input['key_position'];         
+        $position = $input['key_position']; 
         
-        $data = array(
-            'product_id'=>$pro_id,
-            'company_id'=>$cmp_id,           
-            'branch'=>$branch, 
-            'sales_on'=>$sdate, 
-            'keybox_position'=>$position
-        );     
-        $sales =  DB::table('sales')->insert($data);
+        // Insert..
+        $Sales_Ins = new Sale;
+        $Sales_Ins->product_id = $pro_id;
+        $Sales_Ins->company_id = $cmp_id;
+        $Sales_Ins->branch = $branch;
+        $Sales_Ins->date = $sdate;
+        $Sales_Ins->keybox_position = $position;        
+        $Sales_Ins->save();
+
+        
+        
         return 1;
     }
+    
+    
+    public function dev(request $request,$process='')
+    {
+        
+        // view..
+        $Products = Product::all();
+        
+        if($process == 'edit'){ 
+            $pro_id = $request->input('pro_id');
+            $pro_name = $request->input('pro_name');
+            $door_count = $request->input('door_count');  
+            $row_count = $request->input('row_count');  
+            $pro_date = date('Y-m-d',strtotime($request->input('pro_date')));
+            $pro_status = $request->input('pro_status');
+            
+            // update..
+            $Update_pro = Product::find($pro_id);
+            $Update_pro->product_name = $pro_name;
+            $Update_pro->door_count = $door_count;
+            $Update_pro->row_count = $row_count;
+            $Update_pro->manufactured_date = $pro_date;
+            $Update_pro->status = $pro_status;
+            // $Update_pro->touch();  //simply update the timestamps 
+            $Update_pro->save();
+            
+             return 1;
+            exit;
+        }
+        
+        
+        if($process == 'delete'){            
+            
+            $id = $request->input('id');
+            if($id){
+                // delete..
+                $Del_pro = Product::find($id);
+                $delpro = $Del_pro->delete();
+                
+                if($delpro){
+                    $deleted = Sale::where('product_id', '=', $id)->delete(); 
+                }
+                if($deleted == 1){
+                     $status[] = array('status'=>'deleted' );      
+                }
+            } 
+            return json_encode($status);       
+            exit;            
+        }
+     
+        
+
+        return view('Product.view')->with('products', $Products);
+       
+         
+    }
+    
+    
+    
    
 }
