@@ -23,7 +23,7 @@ Route::post('/query', 'Admin\AdminController@insert');
 Route::any('/companyinsert', 'Company\CompanyController@insert');
 
 Route::any('/productinsert', 'Product\ProductController@insert');//selling
-Route::post('/sale', 'Product\ProductController@selling');
+Route::post('/sale/{process?}', 'Product\ProductController@selling');
 Route::any('/products/{process?}', 'Product\ProductController@dev');
 
 
@@ -50,7 +50,16 @@ Route::get('/product', 'Product\ProductController@add')->name('product');
 Route::get('/sale', 'Product\ProductController@sale')->name('sale');
 
 
+//Route::resource('api/Keyplace/{product?}/{door?}/{row?}/{mobile?}/{position?}', 'KeyplaceController@show');
 
 
+Route::get('/Keyplace', 'Keyplace\KeyplaceController@index')->name('Keyplace');
 
+Route::group(['prefix' => 'api'], function () { 
+    Route::get('Keyplace/{product?}/{door?}/{row?}/{mobile?}/{position?}', 'Keyplace\KeyplaceController@show')->where('params', '(.*)');
+});
+
+
+//addkey
+//Route::get('/addkey', 'key\KeyplaceController@fetch')->name('newkey');
 

@@ -46,6 +46,7 @@ class CreateAlltableTable extends Migration
                     $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
                     $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
                     $table->softDeletes();
+					 $table->unique( array('product_id','door_no','row_no') );
                     
                     
 		
@@ -71,7 +72,7 @@ class CreateAlltableTable extends Migration
 		Schema::create('sales', function(Blueprint $table) {	
                     $table->charset = 'utf8'; 
                     $table->collation = 'utf8_unicode_ci';
-		    $table->integer('id');
+		    $table->increments('id');
 		    $table->integer('product_id');
 		    $table->integer('company_id');
 		    $table->string('branch', 250);

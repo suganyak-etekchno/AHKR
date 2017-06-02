@@ -120,6 +120,18 @@
                   </li>                  
                 </ul>
                 
+                
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-key"></i> Key Place <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ url('Keyplace') }}"><i class="fa fa-plus" aria-hidden="true"></i>View Key</a></li>
+                       
+                      
+                    </ul>
+                  </li>                  
+                </ul>
+                
+                
              
                 
                 

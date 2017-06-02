@@ -10,6 +10,9 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Sale;
+use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Support\Facades\Redirect;
 class ProductController extends Controller
 {
     
@@ -64,27 +67,74 @@ class ProductController extends Controller
         return 1;
     }
     
-   public function selling()
+   public function selling(request $request)
     {         
         $input = Input::all();  
-        $sdate = date('Y-m-d',strtotime($input['sdate'])); 
-        $pro_id = $input['pro_id'];
-        $cmp_id = $input['cmp_id'];
-        $branch = $input['branch'];               
-        $position = $input['key_position']; 
         
-        // Insert..
-        $Sales_Ins = new Sale;
-        $Sales_Ins->product_id = $pro_id;
-        $Sales_Ins->company_id = $cmp_id;
-        $Sales_Ins->branch = $branch;
-        $Sales_Ins->date = $sdate;
-        $Sales_Ins->keybox_position = $position;        
-        $Sales_Ins->save();
+        $sdate = date('Y-m-d',strtotime($input['sdate'])); 
+        $pro_id =  Input::get('pro_id'); 
+        $cmp_id = Input::get('cmp_id'); 
+        $branch = Input::get('branch');               
+        $position =Input::get('key_position'); 
+        
+       
+        
+        
+//        $rules = array(
+//			'pro_id'       => 'required|numeric',
+//			'cmp_id'      => 'required|numeric',
+//			'branch' => 'required',
+//                        'key_position' => 'required|numeric'
+//		);
+	//	$validator = Validator::make(Input::all(), $rules);
+                
+                
+             $validator = Validator::make(
+            array(
+                'pro_id'       => Input::get('pro_id'),
+                'cmp_id'      => Input::get('cmp_id'),
+                'branch' => Input::get('branch'),
+                'key_position' => Input::get('key_position')
+            ),
+            array(
+                'pro_id'       => 'required|numeric',
+                'cmp_id'      => 'required|numeric',
+                'branch' => 'required',
+                'key_position' => 'required|numeric'
+            )
+        );
+                
+                
+                
+
+		// process the login
+		if ($validator->fails()) {
+                    return response()->json($validator->errors()->all());
+                    exit;
+		} else {
+			
+			// Insert..
+                        $Sales_Ins = new Sale;
+                        $Sales_Ins->product_id = $pro_id;
+                        $Sales_Ins->company_id = $cmp_id;
+                        $Sales_Ins->branch = $branch;
+                        $Sales_Ins->date = $sdate;
+                        $Sales_Ins->keybox_position = $position;        
+                        $Sales_Ins->save();
+                     //   Session::flash('message', 'Success');			
+			return 1;
+                        exit;
+		}
+                
+                
+                
+      
+        
+        
 
         
         
-        return 1;
+        
     }
     
     

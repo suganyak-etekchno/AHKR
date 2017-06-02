@@ -12,6 +12,13 @@
             </div>
         </div>
     </div>
+    
+    <!-- will be used to show any messages -->
+<!--@if (Session::has('message'))
+	<div class="alert alert-info">{{ Session::get('message') }}</div>
+@endif-->
+
+
     <div class="">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">

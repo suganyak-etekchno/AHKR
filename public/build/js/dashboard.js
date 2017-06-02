@@ -376,3 +376,87 @@
                     
     
  });
+ 
+ 
+ 
+ 
+  //Key Place
+ 
+  $(".kedit-row").click(function(e){      
+        var html='';
+       // var product_id = $(this).attr( "data" );
+        var key_id = this.id;
+        
+        
+           
+        var prod_id = $('#dt_pid'+key_id).html();       
+        var prod_door = $('#dt_pdoor'+key_id).html();
+        var prod_row = $('#dt_prow'+key_id).html();
+        var mobile = $('#dt_mobile'+key_id).html();
+        var prod_status = $('#dt_pstatus'+key_id).html();
+        
+        
+        html+='<form id="key_form">';    
+        html+='<input id="key_id"  type="text" value="'+key_id+'">'; 
+        html+='<input id="prod_id"  type="text" value="'+prod_id+'">';           
+        html+='<input id="prod_door"  type="text" value="'+prod_door+'">';
+        html+='<input id="prod_row"  type="text" value="'+prod_row+'">';            
+        html+='<input id="mobile"  type="text" value="'+mobile+'">';
+        html+='<input id="prod_status"  type="text" value="'+prod_status+'">';       
+        html+='<button id='+key_id+' data='+key_id+' type="button" class="edit_key" >Update</button>';
+        html+='</form>';
+        jQuery("#examplePopoverTable").html(html);
+       
+      
+        
+        
+         $(".edit_key").click(function(){ 
+//             var cstatus = 'Deactive';
+             var pstatus = 'Deactive';
+                var id = key_id;
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: 'products/edit',
+                    data:{
+                        id:id,                        
+                        pro_id:key_id,
+                        pro_name:$('#pro_name').val(),                                         
+                        door_count:$('#door_count').val(),
+                        row_count:$('#row_count').val(),
+                        pro_date:$('#pro_date').val(),
+                        pro_status:$('#pro_status').val()                          
+                    },
+                    dataType:'json',                    
+                    success: function(data) {                        
+                        if(data == '1'){
+                            if($('#pro_status').val() == 1){
+                                pstatus = 'Active';
+                            }                           
+                            
+                                          
+                            $('#dt_pname'+key_id).html($('#pro_name').val());
+                            $('#dt_door_count'+key_id).html($('#door_count').val());
+                            $('#dt_row_count'+key_id).html($('#row_count').val());
+                            $('#dt_date'+key_id).html($('#pro_date').val());
+                            $('#dt_status'+key_id).html(pstatus);                            
+                            $('#product_model').modal('hide');
+                            $('.error').html('<p class="alert alert-info">Edited Successfully</p>');
+                            $('.error').show(1000).delay(2000).hide(100);
+                        }
+                       
+                    }
+
+                });
+        
+        
+           });
+        
+        
+                    
+    
+ });

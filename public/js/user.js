@@ -22,13 +22,10 @@ $("#user_reg").on('submit',(function(e){
         success: function(data){
             console.log(data);
             if(data == 1){
-                 $('.error').append('<p class="alert alert-info">Successfully Inserted</p>');
+                 $('.error').html('<div class="alert alert-info">Successfully Inserted</div>');
                   $('.error').show(1000).delay(2000).hide(100);
             }
-        },
-        error: function(data){
-            console.log(data);
-        }           
+        }        
     });
 }));
 
@@ -52,21 +49,16 @@ $("#cmp_reg").on('submit',(function(e){
         success: function(data){
             console.log(data);
             if(data == 1){
-                 $('.error').append('<p class="alert alert-info">Successfully Inserted</p>');
+                 $('.error').html('<div class="alert alert-info">Successfully Inserted</div>');
                   $('.error').show(1000).delay(2000).hide(100);
             }else{
                 
-                alert('coming');
+               // alert('coming');
                 
                
                 
             }
-        },
-        error: function(xhr, ajaxOptions, thrownError){            
-            $('.error').append('<p class="alert alert-danger">'+thrownError+'</p>');
-            $('.error').show(1000).delay(2000).hide(100);
-           
-        }           
+        }         
     });
 }));
 $("#pro_reg").on('submit',(function(e){
@@ -89,7 +81,7 @@ $("#pro_reg").on('submit',(function(e){
         success: function(data){
             //console.log(data);
             if(data == 1){
-                 $('.error').append('<p class="alert alert-info">Successfully Inserted</p>');
+                 $('.error').html('<div class="alert alert-info">Successfully Inserted</div>');
                   $('.error').show(1000).delay(2000).hide(100);
             }else{
                 
@@ -98,11 +90,6 @@ $("#pro_reg").on('submit',(function(e){
                
                 
             }
-        },
-        error: function(xhr, ajaxOptions, thrownError){            
-            $('.error').append('<p class="alert alert-danger">'+thrownError+'</p>');
-            $('.error').show(1000).delay(2000).hide(100);
-           
         }           
     });
 }));
@@ -116,6 +103,7 @@ $("#sale_reg").on('submit',(function(e){
         }
     });
     e.preventDefault();
+    var error ='';
     $.ajax({
         url: "sale",
         type: "POST",
@@ -126,23 +114,25 @@ $("#sale_reg").on('submit',(function(e){
       //  cache: false,
       //  processData:false,
         success: function(data){
+              alert('comingq');
             console.log(data);
             if(data == 1){
-                 $('.error').append('<p class="alert alert-info">Successfully Inserted</p>');
+                 $('.error').html('<div class="alert alert-info">Successfully Inserted</div>');
                   $('.error').show(1000).delay(2000).hide(100);
             }else{
                 
-                alert('coming');
-                
+               $.each(data, function(index, element) {
+                     // alert(element);
+                     error += '<p>'+element+'</p>';
+                 });
+                //alert(error);
                
-                
+               $('.error').html('<div class="alert alert-info">'+error+'</div>');
+                  $('.error').show(1000).delay(2000).hide(100); 
             }
-        },
-        error: function(xhr, ajaxOptions, thrownError){            
-            $('.error').append('<p class="alert alert-danger">'+thrownError+'</p>');
-            $('.error').show(1000).delay(2000).hide(100);
-           
-        }           
+        }
+        
+            
     });
 }));
 
