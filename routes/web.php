@@ -21,45 +21,24 @@ Route::get('/home', 'User\UserController@index')->name('home');
 Route::get('/admin', 'Admin\AdminController@page')->name('adminpage');
 Route::post('/query', 'Admin\AdminController@insert');
 Route::any('/companyinsert', 'Company\CompanyController@insert');
-
 Route::any('/productinsert', 'Product\ProductController@insert');//selling
 Route::post('/sale/{process?}', 'Product\ProductController@selling');
 Route::any('/products/{process?}', 'Product\ProductController@dev');
-
-
 Route::get('/user', 'Admin\AdminController@add')->name('user');
 Route::get('/edit', 'Admin\AdminController@edit')->name('edit_user');
-
-
 Route::get('/list', 'Admin\AdminController@view')->name('view_user');
-
 Route::post('/edit/{process?}', 'Admin\AdminController@edit');
 Route::post('/delete/{process?}', 'Admin\AdminController@delete');
-
-
 Route::get('/company', 'Company\CompanyController@add')->name('company');
 Route::get('/cedit', 'Company\CompanyController@edit')->name('edit_company');
-
 Route::post('/cedit/{process?}', 'Company\CompanyController@edit');
 Route::any('/cview/{process?}', 'Company\CompanyController@view');
-//Route::post('/cview/{process?}', 'Admin\AdminController@view');
-
-
-
 Route::get('/product', 'Product\ProductController@add')->name('product');
 Route::get('/sale', 'Product\ProductController@sale')->name('sale');
-
-
-//Route::resource('api/Keyplace/{product?}/{door?}/{row?}/{mobile?}/{position?}', 'KeyplaceController@show');
-
-
 Route::get('/Keyplace', 'Keyplace\KeyplaceController@index')->name('Keyplace');
-
 Route::group(['prefix' => 'api'], function () { 
     Route::get('Keyplace/{product?}/{door?}/{row?}/{mobile?}/{position?}', 'Keyplace\KeyplaceController@show')->where('params', '(.*)');
 });
 
 
-//addkey
-//Route::get('/addkey', 'key\KeyplaceController@fetch')->name('newkey');
 
